@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('user.api.urls')),
     path('job-portal/', include('jobPortal.api.urls')),
+    path('mentorship/', include('mentorship.api.urls')),
 ]
 
 # Add each uploaded image url. Format to access from frontend: localhost:8000/images/<nameOfUploadedImage>

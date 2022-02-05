@@ -14,3 +14,17 @@ class Job(models.Model):
 
     def __str__(self):
         return f"{self.poster} added JOB: {self.name}"
+
+
+    def serializer(self):
+        return{
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "location":self.location,
+            "website":self.website,
+            "timestamp":self.timestamp,
+            "poster": {
+                "name":self.poster.first_name,
+            }
+        }

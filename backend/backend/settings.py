@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'user.apps.UserConfig',
     'jobPortal.apps.JobPortalConfig',
+    'mentorship.apps.MentorshipConfig',
 
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
@@ -166,6 +167,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+TIME_INPUT_FORMATS = ('%H:%M',)
 
 USE_I18N = True
 

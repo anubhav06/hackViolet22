@@ -20,7 +20,7 @@ const Header = () => {
 
         {user
         ?   <div>
-                <a href="/restaurants" className='link'>Home</a>
+                <a href="/" className='link'>Home</a>
                 <a href='/my-account' className='link'> {user.username} </a>
                 <a href="" className='link' onClick={logoutUser}> Logout </a>
             </div>
@@ -28,7 +28,7 @@ const Header = () => {
 
         {company
         ?   <div>
-                <a href="/restaurants" className='link'>Home</a>
+                <a href="/" className='link'>Home</a>
                 <a href='/my-account' className='link'> {company.username} </a>
                 <a href="" className='link' onClick={logoutCompany}> Logout </a>
             </div>

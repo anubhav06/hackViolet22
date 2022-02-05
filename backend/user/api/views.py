@@ -6,12 +6,13 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import Group
 
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from django.contrib.auth.models import User
+
+from user.models import MentorInfo
 
 
 
@@ -71,6 +72,9 @@ def registerUser(request):
         group = Group.objects.get(name='Mentor') 
         group.user_set.add(user)
 
+        data = MentorInfo(user=user)
+        data.save()
+
     return Response('Registered Successfully ✅')
 
 
@@ -87,15 +91,18 @@ def registerCompany(request):
     confirmation = request.data["confirmPassword"]
     if password != confirmation:
         return Response("ERROR: Passwords don't match", status=status.HTTP_406_NOT_ACCEPTABLE)
-    
+
+    company = request.data['company']
+    website = request.data['website']
+
     # Input validation. Check if all data is provided
-    if not email or not username or not password or not confirmation:
+    if not email or not username or not password or not confirmation or not company or not website:
         return Response('All data is required')
 
 
     # Attempt to create new user
     try:
-        user = User.objects.create_user(username, email, password)
+        user = User.objects.create_user(username, email, password, first_name=company, last_name=website)
         user.save()
     except IntegrityError:
         return Response("ERROR: Email already taken", status=status.HTTP_406_NOT_ACCEPTABLE)

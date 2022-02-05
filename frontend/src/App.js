@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
+import CompanyRoute from './utils/CompanyRoute'
 import { AuthProvider } from './context/AuthContext'
 
 import LoginPage from './pages/LoginPage'
@@ -9,8 +10,13 @@ import RegisterCompanyPage from './pages/RegisterCompanyPage';
 import UserProfile from './pages/UserProfile';
 import HomePage from './pages/HomePage';
 import JobPortal from './pages/JobPortal';
+import JobPortalCompanyView from './pages/JobPortalCompanyView';
 import { CompanyAuthProvider } from './context/CompanyAuthContext';
 import AddJobPage from './pages/AddJobPage'
+import UserRoute from './utils/UserRoute'
+import MentorshipPortal from './pages/MentorshipPortal'
+import MentorRoute from './utils/MentorRoute'
+import MentorViewPortal from './pages/MentorViewPortal'
 
 function App() {
   return (
@@ -27,8 +33,13 @@ function App() {
             <Route component={HomePage} path="/" exact />
 
             <PrivateRoute component={UserProfile} path="/my-account"  exact />
-            <PrivateRoute component={JobPortal} path="/job-portal" exact />
-            <PrivateRoute component={AddJobPage} path='/job-portal/add' exact />
+            
+            <UserRoute component={JobPortal} path="/job-portal" exact />
+            <UserRoute component={MentorshipPortal} path='/mentorship' exact />
+            <MentorRoute component={MentorViewPortal} path='/mentorship/mentor-view' exact/>
+            
+            <CompanyRoute component={JobPortalCompanyView} path="/job-portal/company/" exact />
+            <CompanyRoute component={AddJobPage} path='/job-portal/company/add' exact />
 
           </CompanyAuthProvider>
         </AuthProvider>
