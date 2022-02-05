@@ -76,9 +76,9 @@ def registerUser(request):
 
         data = UserInfo(mentor=True, user=user)
         data.save()
-
-    data = UserInfo(mentor=False ,user=user)
-    data.save()
+    else:
+        data = UserInfo(mentor=False ,user=user)
+        data.save()
 
     return Response('Registered Successfully ✅')
 

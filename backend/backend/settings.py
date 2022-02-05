@@ -207,11 +207,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS Configuration: 
 # List of allowed origins to make an API request    
 # https://github.com/adamchainz/django-cors-headers#configuration
-CORS_ALLOWED_ORIGINS = [
-    config('CORS_BACKEND_HOST'),
-    config('CORS_FRONTEND_HOST'),
-]
-
+#CORS_ALLOWED_ORIGINS = [
+#    config('CORS_BACKEND_HOST'),
+#    config('CORS_FRONTEND_HOST'),
+#]
+CORS_ALLOW_ALL_ORIGINS: True
 
 # https://github.com/heroku/django-heroku/issues/39
 if 'I_AM_HEROKU' in os.environ:
