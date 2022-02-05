@@ -1,3 +1,4 @@
+from tracemalloc import start
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from rest_framework import status
@@ -11,8 +12,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from django.contrib.auth.models import User
+from user.api.serializers import UserInfoSerializer
+from user.models import UserInfo
 
-from user.models import MentorInfo
 
 
 
@@ -72,8 +74,11 @@ def registerUser(request):
         group = Group.objects.get(name='Mentor') 
         group.user_set.add(user)
 
-        data = MentorInfo(user=user)
+        data = UserInfo(mentor=True, user=user)
         data.save()
+
+    data = UserInfo(mentor=False ,user=user)
+    data.save()
 
     return Response('Registered Successfully ✅')
 
@@ -114,6 +119,46 @@ def registerCompany(request):
     return Response('Registered Successfully ✅')
 
 
+# To add a user's information
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def addInfo(request):
+
+    name = request.data['name']
+    bio = request.data['bio']
+    image = request.data['image']
+    startTime = request.data['startTime']
+    endTime = request.data['endTime']
+    timeZone = request.data['timeZone']
+
+    # If the user is a mentor
+    if request.user.groups.filter(name='Mentor').exists():
+        userInfo = UserInfo.objects.get(user=request.user)
+        userInfo.name = name
+        userInfo.bio = bio
+        userInfo.image = image
+        userInfo.startTime = startTime
+        userInfo.endTime = endTime
+        userInfo.timeZone = timeZone
+        userInfo.save()
+    else:
+        userInfo = UserInfo.objects.get(user=request.user)
+        userInfo.name = name
+        userInfo.bio = bio
+        userInfo.image = image
+        userInfo.save()
+
+    return Response('Data added')
+
+
+# Get the information of the requested user
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getInfo(request):
+
+    info = UserInfo.objects.filter(user=request.user)
+    serialzier = UserInfoSerializer(info, many=True)
+    return Response(serialzier.data)    
 
 
 # ------------------------------------

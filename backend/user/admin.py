@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import MentorInfo
+from .models import UserInfo
 
-admin.site.register(MentorInfo)
+admin.site.register(UserInfo)

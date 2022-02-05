@@ -177,8 +177,8 @@ USE_TZ = True
 
 
 
-# AWS S3 Buckets Config - Stores data in S3 buckets instead of storing locally
-# Refer to https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html for more details
+## AWS S3 Buckets Config - Stores data in S3 buckets instead of storing locally
+## Refer to https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html for more details
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')

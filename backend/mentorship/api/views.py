@@ -8,8 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 from django.contrib.auth.models import User
 from mentorship.models import MeetingInfo
-from user.models import MentorInfo
-from user.api.serializers import MentorInfoSerializer
+from user.api.serializers import UserInfoSerializer
+from user.models import UserInfo
 from mentorship.api.serializers import MeetingInfoSerializer
 
 import string
@@ -36,10 +36,11 @@ api_secret = config('TWILIO_API_KEY_SECRET')
 
 
 @api_view(['GET'])
-def getMentors(request):
-    
-    mentors = MentorInfo.objects.all()
-    serializer = MentorInfoSerializer(mentors, many=True)
+def getMentors(request):   
+
+    mentors = UserInfo.objects.filter(mentor=True)
+    #mentors = MentorInfo.objects.all()
+    serializer = UserInfoSerializer(mentors, many=True)
 
     return Response(serializer.data)
 
@@ -49,7 +50,7 @@ def getMentors(request):
 def scheduleMeet(request):
 
     mentorID = request.data['mentor']
-    mentor = MentorInfo.objects.get(id=mentorID)
+    mentor = UserInfo.objects.get(id=mentorID)
 
     getTime = request.data['time']
     startTime = str(str(getTime)+':00')
@@ -76,7 +77,7 @@ def getMeetings(request):
 @permission_classes([IsAuthenticated])
 def getMentorMeetings(request):
     
-    mentor = MentorInfo.objects.get(user=request.user)
+    mentor = UserInfo.objects.get(user=request.user)
     meetings = MeetingInfo.objects.filter(mentor=mentor)
 
     return Response([meeting.serializer() for meeting in meetings])

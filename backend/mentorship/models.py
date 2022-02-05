@@ -1,13 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-from user.models import MentorInfo
+from user.models import UserInfo
 
 
 class MeetingInfo(models.Model):
 
     accepeted = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    mentor = models.ForeignKey(MentorInfo, on_delete=models.CASCADE, related_name='mentor')
+    mentor = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='meetingMentor')
     startTime = models.TimeField()
     endTime = models.TimeField()
     meetingLink = models.CharField(max_length=100, null=True, default=None)
