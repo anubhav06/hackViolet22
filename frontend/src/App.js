@@ -17,6 +17,7 @@ import UserRoute from './utils/UserRoute'
 import MentorshipPortal from './pages/MentorshipPortal'
 import MentorRoute from './utils/MentorRoute'
 import MentorViewPortal from './pages/MentorViewPortal'
+import Forum from './pages/Forum'
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
             <UserRoute component={JobPortal} path="/job-portal" exact />
             <UserRoute component={MentorshipPortal} path='/mentorship' exact />
             <MentorRoute component={MentorViewPortal} path='/mentorship/mentor-view' exact/>
+
+            <UserRoute component={Forum} path='/forum' exact />
             
             <CompanyRoute component={JobPortalCompanyView} path="/job-portal/company/" exact />
             <CompanyRoute component={AddJobPage} path='/job-portal/company/add' exact />

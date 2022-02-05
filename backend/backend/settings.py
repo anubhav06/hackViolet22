@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'jobPortal.apps.JobPortalConfig',
     'mentorship.apps.MentorshipConfig',
+    'forum.apps.ForumConfig',
 
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',

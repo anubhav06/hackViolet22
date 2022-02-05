@@ -35,7 +35,7 @@ const HomePage = () => {
                     </div>
                 }
                 <a href="/job-portal"> Job Portal - ANUBHAV </a> <br/>
-                <a href="/TODO"> Quora like forum - DHRUV </a> <br/>
+                <a href="/forum"> Quora like forum - DHRUV </a> <br/>
             </div>}
 
 
