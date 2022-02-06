@@ -126,7 +126,7 @@ const MentorshipPortal = () => {
         <Grid container>
           <Grid item xs={5}>
             <Paper>
-              <Typography gutterBottom variant="h3">
+              <Typography gutterBottom variant="h3" color="textSecondary">
                 {' '}
                 Mentorship Portal{' '}
               </Typography>
@@ -219,7 +219,7 @@ const MentorshipPortal = () => {
           <Grid item xs={1} />
           <Grid item xs={6}>
             <Paper>
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom variant="h5" color="textSecondary">
                 Meetings scheduled by user
               </Typography>
               <div>

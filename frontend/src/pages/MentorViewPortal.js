@@ -1,8 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
+
 
 const MentorViewPortal = () => {
   const { user, authTokens } = useContext(AuthContext);
@@ -71,14 +77,14 @@ const MentorViewPortal = () => {
     <div>
       <Header />
 
-      <h1> --- MENTOR VIEW --- </h1>
+      <Typography gutterBottom variant="h2" color="textSecondary"> Meetings Scheduled for You!</Typography>
       <div>
         {meetings.map((meeting) => (
           <div key={meeting.id}>
             {meeting.accepted ? (
-              <p> Accepted: True </p>
+              <Typography gutterBottom variant="h6" color="secondary"> Accepted: True </Typography>
             ) : (
-              <p> Accepted: False </p>
+              <Typography gutterBottom variant="h6" color="secondary"> Accepted: False </Typography>
             )}
             <p>
               {' '}
