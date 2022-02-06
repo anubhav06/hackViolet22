@@ -16,15 +16,18 @@ import AddJobPage from './pages/AddJobPage';
 import UserRoute from './utils/UserRoute';
 import MentorshipPortal from './pages/MentorshipPortal';
 import MentorRoute from './utils/MentorRoute';
+import MentorUserRoute from './utils/MentorUserRoute';
 import MentorViewPortal from './pages/MentorViewPortal';
 import Forum from './pages/Forum';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
         <AuthProvider>
           <CompanyAuthProvider>
+            <Navbar />
             <Route component={LoginPage} path="/login" />
             <Route component={LoginCompanyPage} path="/login-company" />
             <Route component={RegisterPage} path="/register" />
@@ -33,7 +36,7 @@ function App() {
 
             <PrivateRoute component={UserProfile} path="/my-account" exact />
 
-            <UserRoute component={JobPortal} path="/job-portal" exact />
+            <MentorUserRoute component={JobPortal} path="/job-portal" exact />
             <UserRoute component={MentorshipPortal} path="/mentorship" exact />
             <MentorRoute
               component={MentorViewPortal}
@@ -41,7 +44,7 @@ function App() {
               exact
             />
 
-            <UserRoute component={Forum} path="/forum" exact />
+            <MentorUserRoute component={Forum} path="/forum" exact />
 
             <CompanyRoute
               component={JobPortalCompanyView}

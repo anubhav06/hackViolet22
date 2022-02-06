@@ -27,5 +27,6 @@ class MeetingInfo(models.Model):
                 "name" : self.mentor.name,
                 "bio" : self.mentor.bio,
                 "timeZone" : self.mentor.timeZone,
+                "image" : self.mentor.image,
             }
         }
