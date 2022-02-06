@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
 import CompanyAuthContext from '../context/CompanyAuthContext';
 import Header from '../components/Header';
 
