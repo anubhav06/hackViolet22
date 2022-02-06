@@ -210,6 +210,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     config('CORS_BACKEND_HOST'),
     config('CORS_FRONTEND_HOST'),
+    config('CORS_FRONTEND_HOST2'),
 ]
 
 # https://github.com/heroku/django-heroku/issues/39
