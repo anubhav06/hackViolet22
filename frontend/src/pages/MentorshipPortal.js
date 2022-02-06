@@ -118,6 +118,7 @@ const MentorshipPortal = () => {
     }
   };
   console.log('MEETINGS: ', meetings);
+  console.log('MENTOR: ', mentors);
 
   return (
     <div>
@@ -137,10 +138,11 @@ const MentorshipPortal = () => {
                       <CardHeader
                         avatar={
                           <Avatar
+                            src={mentor.image}
                             sx={{ bgcolor: red[500] }}
                             aria-label="recipe"
                           >
-                            {mentor.name[0]}
+                            {/* {mentor.name[0]} */}
                           </Avatar>
                         }
                         // action={
@@ -233,7 +235,7 @@ const MentorshipPortal = () => {
                   <div key={meeting.id}>
                     <Card sx={{ maxWidth: 345 }}>
                       <CardContent>
-                        {meeting.confirmed === true ? (
+                        {meeting.accepted === true ? (
                           <Typography
                             gutterBottom
                             variant="h6"
