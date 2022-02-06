@@ -36,6 +36,7 @@ const MentorshipPortal = () => {
   const [mentors, setMentors] = useState([]);
   const [meetings, setMeetings] = useState([]);
   const [formDisabled, setFormDisabled] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   const history = useHistory();
 
@@ -167,22 +168,14 @@ const MentorshipPortal = () => {
                         <Button
                           variant="contained"
                           endIcon={<AlarmIcon />}
-                          onClick={() =>
-                            formDisabled === true
-                              ? setFormDisabled(false)
-                              : setFormDisabled(true)
-                          }
+                          onClick={() => setShowForm(true)}
                         >
                           Schedule a meet
                         </Button>
 
-                        <Collapse
-                          in={formDisabled}
-                          timeout="auto"
-                          unmountOnExit
-                        >
+                        <Collapse in={showForm} timeout="auto" unmountOnExit>
                           <CardContent>
-                            <form hidden={formDisabled} onSubmit={scheduleMeet}>
+                            <form onSubmit={scheduleMeet}>
                               <Typography paragraph>
                                 Enter start time for a 1hr meeting
                               </Typography>
@@ -239,21 +232,15 @@ const MentorshipPortal = () => {
                 {meetings.map((meeting) => (
                   <div key={meeting.id}>
                     <Card sx={{ maxWidth: 345 }}>
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image="/static/images/cards/contemplative-reptile.jpg"
-                        alt="green iguana"
-                      />
                       <CardContent>
                         {meeting.confirmed === true ? (
                           <Typography
                             gutterBottom
-                            variant="h5"
+                            variant="h6"
                             component="div"
                             alignCenter
                           >
-                            Meeting Confirmed: True
+                            Meeting Confirmed!
                           </Typography>
                         ) : (
                           <Typography
@@ -262,7 +249,7 @@ const MentorshipPortal = () => {
                             component="div"
                             alignCenter
                           >
-                            Meeting Confirmed: False
+                            Meeting not Confirmed by mentor
                           </Typography>
                         )}
 
@@ -275,8 +262,6 @@ const MentorshipPortal = () => {
                         </Typography>
                         {meeting.accepted === false ? (
                           <Typography variant="body2" color="text.secondary">
-                            Requested Time: {meeting.startTime} -{' '}
-                            {meeting.endTime} {meeting.mentor.timeZone}
                             Meeting Link: NA{' '}
                           </Typography>
                         ) : (
