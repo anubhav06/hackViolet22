@@ -26,7 +26,7 @@ export default function MenuCard() {
   ));
 
   return (
-    <Card sx={{ maxWidth: 475 }}>
+    <Card sx={{ maxWidth: 475, my: 10 }}>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom component="div" align="center" variant="h3">

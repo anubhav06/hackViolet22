@@ -51,6 +51,7 @@ const Forum = () => {
       content={post.content}
       likes={post.likes}
       numComments={post.reply.length}
+      id={post.id}
     />
   ));
 
@@ -117,17 +118,18 @@ const Forum = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
 
       <div className="forumPage">
         <div className="forumCol1">
           <div className="postForum">
-            <h1>Ask a Question</h1>
+            <h1 className="ask">Ask a Question</h1>
             <AskQuestion />
           </div>
           <div className="forumCards">{forumCards}</div>
         </div>
         <div className="forumCol2">
+          {/*   <br /><br /><br /><br /> */}
           <MenuCard />
         </div>
       </div>
