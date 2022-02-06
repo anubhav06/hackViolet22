@@ -128,7 +128,7 @@ const MentorshipPortal = () => {
                     {mentors.map(mentor => (
                     <div key={mentor.id}>
 
-<Card sx={{ maxWidth: "auto" }}>
+                        <Card sx={{ maxWidth: "auto" }}>
                             <CardHeader
                                 avatar={
                                 <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -163,10 +163,11 @@ const MentorshipPortal = () => {
                                 
                                 <Collapse in={~formDisabled} timeout="auto" unmountOnExit>
                                     <CardContent>
+                                    
+                                    <form hidden={formDisabled}onSubmit={scheduleMeet}>
                                     <Typography paragraph>
                                     Enter start time for a 1hr meeting
                                     </Typography>
-                                    <form hidden={formDisabled}onSubmit={scheduleMeet}>
                                         <input type='number' name='time' min={parseInt(mentor.startTime?.split(':')[0])} max={parseInt(mentor.endTime?.split(':')[0])-1}/> : 00: 00 <br/>
                                         <input type='text' name='mentor' defaultValue={mentor.id} hidden={true} />
                                         <input type='submit' value='Schedule' />
@@ -198,7 +199,7 @@ const MentorshipPortal = () => {
                         <Typography gutterBottom variant="h5">Meetings scheduled by user</Typography> 
             <div>
                 {meetings.length === 0 ? 
-                <p> No meetings scheduled </p>
+                <Typography variant="h5" component="div" alignCenter>No meetings scheduled </Typography>
                 : (null)}
 
                 {meetings.map(meeting => (
@@ -212,26 +213,34 @@ const MentorshipPortal = () => {
                             />
                             <CardContent>
                                     {meeting.confirmed === true ?
-                                    <Typography gutterBottom variant="h5" component="div">
+                                    <Typography gutterBottom variant="h5" component="div" alignCenter>
                                     Meeting Confirmed: True
                                     </Typography>
-                                    : <Typography gutterBottom variant="h5" component="div">
+                                    : <Typography gutterBottom variant="h5" component="div" alignCenter>
                                     Meeting Confirmed: False
                                     </Typography>
                                     }
                                 
                                 <Typography variant="body2" color="text.secondary">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000
-                                species, ranging across all continents except Antarctica
+                                    Mentor Name: {meeting.mentor.name}
                                 </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                Requested Time: {meeting.startTime} - {meeting.endTime} {meeting.mentor.timeZone}
+                                </Typography>
+                                {meeting.accepted === false ? 
+                                <Typography variant="body2" color="text.secondary">
+                                Requested Time: {meeting.startTime} - {meeting.endTime} {meeting.mentor.timeZone}
+                                 Meeting Link: NA </Typography>
+                                : <Typography variant="body2" color="text.secondary" > Meeting Link: {meeting.meetingLink} </Typography>}
+        
                             </CardContent>
                             </Card>
                         
-                        <p> Mentor Name: {meeting.mentor.name} </p>
+                        {/* <p> Mentor Name: {meeting.mentor.name} </p>
                         <p> Requested Time: {meeting.startTime} - {meeting.endTime} {meeting.mentor.timeZone} </p>
                         {meeting.accepted === false ? 
                         <p> Meeting Link: NA </p>
-                        : <p> Meeting Link: {meeting.meetingLink} </p>}
+                        : <p> Meeting Link: {meeting.meetingLink} </p>} */}
                     </div>
                 ))}
             </div>
