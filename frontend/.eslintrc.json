@@ -18,7 +18,13 @@
       "no-process-exit": "off",
       "object-shorthand": "off",
       "class-methods-use-this": "off",
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "react-hooks/exhaustive-deps": "off",
+      "import/no-extraneous-dependencies": ["warn",  {"devDependencies": true}],
+      "react/jsx-props-no-spreading": "off",
+      "react/no-unescaped-entities": 0 ,
+      "jsx-a11y/label-has-for": 0
+
     },
     "plugins": ["prettier","react", "import", "jsx-a11y","react-hooks"],
     "parserOptions": {

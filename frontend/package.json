@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier \"src/**/*.{js,mjs,jsx,css,scss,html}\" --write ",
-    "lint": "eslint src --ext .js,.mjs,.jsx --quiet --fix"
+    "lint": "eslint src --ext .js,.mjs,.jsx --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -43,8 +43,8 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
