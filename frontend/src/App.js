@@ -18,13 +18,15 @@ import MentorshipPortal from './pages/MentorshipPortal';
 import MentorRoute from './utils/MentorRoute';
 import MentorViewPortal from './pages/MentorViewPortal';
 import Forum from './pages/Forum';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
         <AuthProvider>
           <CompanyAuthProvider>
+            <Navbar />
             <Route component={LoginPage} path="/login" />
             <Route component={LoginCompanyPage} path="/login-company" />
             <Route component={RegisterPage} path="/register" />
