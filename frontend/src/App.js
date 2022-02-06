@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PrivateRoute from './utils/PrivateRoute';
 import CompanyRoute from './utils/CompanyRoute';
 import { AuthProvider } from './context/AuthContext';
@@ -8,7 +9,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import LoginCompanyPage from './pages/LoginCompanyPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import RegisterCompanyPage from './pages/RegisterCompanyPage.jsx';
-import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/UserProfile.jsx';
 import HomePage from './pages/HomePage';
 import JobPortal from './pages/JobPortal';
 import JobPortalCompanyView from './pages/JobPortalCompanyView';
@@ -22,9 +23,20 @@ import MentorViewPortal from './pages/MentorViewPortal';
 import Forum from './pages/Forum';
 import Navbar from './components/Navbar/Navbar';
 
+const Theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FF5252',
+    },
+    secondary: {
+      main: '#FF5252',
+    },
+  },
+});
+
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={Theme}>
       <Router>
         <AuthProvider>
           <CompanyAuthProvider>
@@ -60,7 +72,7 @@ function App() {
           </CompanyAuthProvider>
         </AuthProvider>
       </Router>
-    </div>
+    </ThemeProvider>
   );
 }
 
