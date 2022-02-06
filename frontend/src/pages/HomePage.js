@@ -10,7 +10,7 @@ import img2 from '../assets/home1.png';
 import img3 from '../assets/home1.svg';
 import img4 from '../assets/home2.svg';
 import img5 from '../assets/home2.png';
-import img6 from '../assets/home3.png';
+import img6 from '../assets/home3.svg';
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);

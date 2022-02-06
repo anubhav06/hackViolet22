@@ -29,7 +29,6 @@ import AlarmIcon from '@mui/icons-material/Alarm';
 import Collapse from '@mui/material/Collapse';
 import { typography } from '@mui/system';
 import AuthContext from '../context/AuthContext';
-import Header from '../components/Header';
 
 const MentorshipPortal = () => {
   const { user, authTokens } = useContext(AuthContext);
@@ -123,7 +122,6 @@ const MentorshipPortal = () => {
 
   return (
     <div>
-      <Header />
       <Container>
         <Grid container>
           <Grid item xs={5}>
