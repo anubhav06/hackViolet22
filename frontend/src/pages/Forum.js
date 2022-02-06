@@ -1,8 +1,14 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+// import TextField from '@mui/material/TextField';
 import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
+import MenuCard from '../components/Cards/menuCard';
+import CardContainer from '../components/Cards/forumCard';
+// import forumData from '../data/forumData';
+import AskQuestion from '../components/Cards/submitTextfield';
+import '../css/Forum.css';
 
 const Forum = () => {
   const { authTokens } = useContext(AuthContext);
@@ -36,35 +42,22 @@ const Forum = () => {
     getPosts();
   }, []);
 
-  // To add a new post
-  const addPost = async (e) => {
-    e.preventDefault();
-    // Make a post request to the api with the user's credentials.
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/forum/add-post/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // Provide the authToken when making API request to backend to access the protected route of that user
-          Authorization: `Bearer ${String(authTokens.access)}`,
-        },
-        // 'e.target' is the form, '.username' gets the username field and '.password' gets the password field from wherever it is called (LoginPage.js here)
-        body: JSON.stringify({ content: e.target.content.value }),
-      }
-    );
-    // Get the access and refresh tokens
-    const data = await response.json();
-
-    if (response.status === 200) {
-      alert(data);
-      history.push('/forum');
-    } else {
-      alert('ERROR: ', data);
-    }
-  };
+  const forumCards = posts.map((post) => (
+    <CardContainer
+      key={post.id}
+      /* sx={{ m: 2 }} */
+      forumTitle={post.poster.name}
+      datePosted={new Date(post.timestamp).toDateString()}
+      content={post.content}
+      likes={post.likes}
+      numComments={post.reply.length}
+      id={post.id}
+    />
+  ));
 
   // To add a new post
+
+  // To add a new comment
   const addComment = async (e) => {
     e.preventDefault();
     // Make a post request to the api with the user's credentials.
@@ -95,7 +88,7 @@ const Forum = () => {
     }
   };
 
-  // To add a new post
+  // To add a new like
   const like = async (e) => {
     e.preventDefault();
     // Make a post request to the api with the user's credentials.
@@ -125,64 +118,20 @@ const Forum = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
 
-      <h3> --- To add a new post --- </h3>
-      <form onSubmit={addPost}>
-        <textarea name="content" /> <br />
-        <input type="submit" />
-      </form>
-
-      <h3> --- Posts/Questions/Discussions are shown here --- </h3>
-      <div>
-        {posts.map((post) => (
-          <div key={post.id} style={{ border: '1px solid black' }}>
-            <p> Poster Name: {post.poster.name} </p>
-            <p>
-              {' '}
-              Poster Img:{' '}
-              <img
-                src={post.poster.image}
-                alt="profilePhoto"
-                style={{ height: 50 }}
-              />{' '}
-            </p>
-            <p> {post.content} </p>
-            <p> Timestamp: {post.timestamp} </p>
-            <p> Likes: {post.likes} </p>
-            <form onSubmit={like}>
-              <input name="postID" defaultValue={post.id} hidden />
-              <input type="submit" value="Like Btn" />
-            </form>
-            <button type="submit" onClick={() => setDisplayForm(false)}>
-              {' '}
-              Comment{' '}
-            </button>
-            <form onSubmit={addComment} hidden={displayForm}>
-              <textarea name="content" /> <br />
-              <input name="postID" defaultValue={post.id} hidden />
-              <input type="submit" />
-            </form>
-
-            <p> ---------Comments: ---------</p>
-            {post.reply.map((reply) => (
-              <div key={reply.id}>
-                <p> Poster Name: {reply.poster.name} </p>
-                <p>
-                  {' '}
-                  Poster Img:{' '}
-                  <img
-                    src={reply.poster.image}
-                    alt="profilePhoto"
-                    style={{ height: 50 }}
-                  />{' '}
-                </p>
-                <p> {reply.content} </p>
-                <p> Timestamp: {reply.timestamp} </p>
-              </div>
-            ))}
+      <div className="forumPage">
+        <div className="forumCol1">
+          <div className="postForum">
+            <h1 className="ask">Ask a Question</h1>
+            <AskQuestion />
           </div>
-        ))}
+          <div className="forumCards">{forumCards}</div>
+        </div>
+        <div className="forumCol2">
+          {/*   <br /><br /><br /><br /> */}
+          <MenuCard />
+        </div>
       </div>
     </div>
   );
