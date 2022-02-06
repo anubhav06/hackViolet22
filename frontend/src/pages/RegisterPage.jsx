@@ -59,77 +59,79 @@ function RegisterPage() {
         <Typography component="h1" variant="h5">
           Register your account
         </Typography>
-        <Box component="form" onSubmit={registerUser} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            type={showPassword ? 'text' : 'password'}
-            id="password"
-            autoComplete="current-password"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={() => {}}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            label="Password"
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="confirmPassword"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            label="Enter Password Again"
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            label="I am a Mentor"
-            name="mentor"
-          />
+        <form onSubmit={registerUser}>
+          <Box sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              autoComplete="current-password"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={() => {}}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              label="Password"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="confirmPassword"
+              type="password"
+              id="confirmPassword"
+              autoComplete="current-password"
+              label="Enter Password Again"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="I am a Mentor"
+              name="mentor"
+            />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Register
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="/register-company" variant="body2">
-                Register as a Company
-              </Link>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Register
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="/register-company" variant="body2">
+                  Register as a Company
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  Already have an account? Login
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href="/login" variant="body2">
-                Already have an account? Login
-              </Link>
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
+        </form>
       </Box>
     </>
   );
