@@ -1,3 +1,5 @@
+/* eslint-disable radix */
+/* eslint-disable react/button-has-type */
 import React, {useState, useEffect, useContext} from 'react'
 import Header from '../components/Header'
 import { useHistory } from 'react-router-dom'
@@ -29,88 +31,89 @@ import { typography } from '@mui/system';
 
 
 const MentorshipPortal = () => {
+  const { user, authTokens } = useContext(AuthContext);
 
-    let {user, authTokens} = useContext(AuthContext)
+  const [mentors, setMentors] = useState([]);
+  const [meetings, setMeetings] = useState([]);
+  const [formDisabled, setFormDisabled] = useState(true);
 
-    let [mentors, setMentors] = useState([])
-    let [meetings, setMeetings] = useState([])
-    let [formDisabled, setFormDisabled] = useState(true)
+  const history = useHistory();
 
-    const history = useHistory()
-    
-
-    useEffect(()=> {
-        
-        
-        // To fetch all the mentors
-        let getMentors = async() =>{
-            let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/mentorship/get-mentors/`, {
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            })
-            let data = await response.json()
-
-            if(response.status === 200){
-                setMentors(data)
-            }else{
-                alert('ERROR: ', data)
-            }
-            
+  useEffect(() => {
+    // To fetch all the mentors
+    const getMentors = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/mentorship/get-mentors/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
+      );
+      const data = await response.json();
 
+      if (response.status === 200) {
+        setMentors(data);
+      } else {
+        alert('ERROR: ', data);
+      }
+    };
 
-        // To fetch all the mentors
-        let getMeetings = async() =>{
-            let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/mentorship/user/get-meetings/`, {
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json',
-                    // Provide the authToken when making API request to backend to access the protected route of that user
-                    'Authorization':'Bearer ' + String(authTokens.access)
-                }
-            })
-            let data = await response.json()
-
-            if(response.status === 200){
-                setMeetings(data)
-            }else{
-                alert('ERROR: ', data)
-            }
-            
+    // To fetch all the mentors
+    const getMeetings = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/mentorship/user/get-meetings/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // Provide the authToken when making API request to backend to access the protected route of that user
+            Authorization: `Bearer ${String(authTokens.access)}`,
+          },
         }
-        
-        getMentors()
-        getMeetings()
+      );
+      const data = await response.json();
 
-    }, [])
+      if (response.status === 200) {
+        setMeetings(data);
+      } else {
+        alert('ERROR: ', data);
+      }
+    };
 
+    getMentors();
+    getMeetings();
+  }, []);
 
-    // To schedule a meet with a mentor
-    let scheduleMeet = async (e )=> {
-        e.preventDefault()
-        // Make a post request to the api with the user's credentials.
-        let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/mentorship/user/schedule-meet/`, {
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
-                // Provide the authToken when making API request to backend to access the protected route of that user
-                'Authorization':'Bearer ' + String(authTokens.access)
-            },
-            // 'e.target' is the form, '.username' gets the username field and '.password' gets the password field from wherever it is called (LoginPage.js here)
-            body:JSON.stringify({'time':e.target.time.value, 'mentor':e.target.mentor.value})
-        })
-        // Get the access and refresh tokens
-        let data = await response.json()
+  // To schedule a meet with a mentor
+  const scheduleMeet = async (e) => {
+    e.preventDefault();
+    // Make a post request to the api with the user's credentials.
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/mentorship/user/schedule-meet/`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Provide the authToken when making API request to backend to access the protected route of that user
+          Authorization: `Bearer ${String(authTokens.access)}`,
+        },
+        // 'e.target' is the form, '.username' gets the username field and '.password' gets the password field from wherever it is called (LoginPage.js here)
+        body: JSON.stringify({
+          time: e.target.time.value,
+          mentor: e.target.mentor.value,
+        }),
+      }
+    );
+    // Get the access and refresh tokens
+    const data = await response.json();
 
-        if(response.status === 200){
-            alert(data)
-            history.push('/mentorship')
-        }
-        else{
-            alert('ERROR: ', data)
-        }
+    if (response.status === 200) {
+      alert(data);
+      history.push('/mentorship');
+    } else {
+      alert('ERROR: ', data);
     }
 
 
@@ -255,11 +258,12 @@ const MentorshipPortal = () => {
             
 
 
-            {/*  To show a user's scheduled meetings */}
+            
             
 
         </div>
-    )
+    );
+};
 }
 
-export default MentorshipPortal
+export default MentorshipPortal;
