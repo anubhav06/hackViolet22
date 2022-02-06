@@ -41,8 +41,8 @@ export const CompanyAuthProvider = ({ children }) => {
         },
         // 'e.target' is the form, '.username' gets the username field and '.password' gets the password field from wherever it is called (LoginPage.js here)
         body: JSON.stringify({
-          username: e.target.email.value,
-          password: e.target.password.value,
+          'username': e.target.email.value,
+          'password': e.target.password.value,
         }),
       }
     );
@@ -95,11 +95,11 @@ export const CompanyAuthProvider = ({ children }) => {
         },
         // 'e.target' is the form, '.username' gets the username field and '.password' gets the password field from wherever it is called (LoginPage.js here)
         body: JSON.stringify({
-          company: e.target.company.value,
-          website: e.target.website.value,
-          email: e.target.email.value,
-          password: e.target.password.value,
-          confirmPassword: e.target.confirmPassword.value,
+          'company': e.target.company.value,
+          'website': e.target.website.value,
+          'email': e.target.email.value,
+          'password': e.target.password.value,
+          'confirmPassword': e.target.confirmPassword.value,
         }),
       }
     );
