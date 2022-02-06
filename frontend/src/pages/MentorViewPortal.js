@@ -2,13 +2,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
-
 
 const MentorViewPortal = () => {
   const { user, authTokens } = useContext(AuthContext);
@@ -76,35 +76,59 @@ const MentorViewPortal = () => {
   return (
     <div>
       <Header />
-
-      <Typography gutterBottom variant="h2" color="textSecondary"> Meetings Scheduled for You!</Typography>
+      {/* <Paper> */}
+      <Typography gutterBottom variant="h2" color="textSecondary">
+        {' '}
+        Meetings Scheduled for You!
+      </Typography>
       <div>
         {meetings.map((meeting) => (
           <div key={meeting.id}>
-            {meeting.accepted ? (
-              <Typography gutterBottom variant="h6" color="secondary"> Accepted: True </Typography>
-            ) : (
-              <Typography gutterBottom variant="h6" color="secondary"> Accepted: False </Typography>
-            )}
-            <p>
-              {' '}
-              Timings: {meeting.startTime} - {meeting.endTime}{' '}
-              {meeting.mentor.timeZone}{' '}
-            </p>
-            <p>
-              {' '}
-              Meeting link:{' '}
-              <a href={meeting.meetingLink}>{meeting.meetingLink}</a>{' '}
-            </p>
-            {meeting.accepted ? null : (
-              <form onSubmit={confirmMeeting}>
-                <input type="text" name="id" defaultValue={meeting.id} hidden />
-                <input type="submit" value="Confirm Meeting" />
-              </form>
-            )}
+            <Card sx={{ maxWidth: 345 }}>
+              <CardContent>
+                {meeting.accepted ? (
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    color="secondary"
+                    alignCenter
+                  >
+                    {' '}
+                    Accepted: True{' '}
+                  </Typography>
+                ) : (
+                  <Typography gutterBottom variant="h6" color="secondary">
+                    {' '}
+                    Accepted: False{' '}
+                  </Typography>
+                )}
+                <Typography variant="body2" color="text.secondary">
+                  {' '}
+                  Timings: {meeting.startTime} - {meeting.endTime}{' '}
+                  {meeting.mentor.timeZone}{' '}
+                </Typography>
+                <p>
+                  {' '}
+                  Meeting link:{' '}
+                  <a href={meeting.meetingLink}>{meeting.meetingLink}</a>{' '}
+                </p>
+                {meeting.accepted ? null : (
+                  <form onSubmit={confirmMeeting}>
+                    <input
+                      type="text"
+                      name="id"
+                      defaultValue={meeting.id}
+                      hidden
+                    />
+                    <input type="submit" value="Confirm Meeting" />
+                  </form>
+                )}
+              </CardContent>
+            </Card>
           </div>
         ))}
       </div>
+      {/* </Paper> */}
     </div>
   );
 };
