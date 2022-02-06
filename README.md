@@ -2,15 +2,17 @@
   
 
 Project: https://devpost.com/software/womenly
+<br/><br/>
+<img src="https://i.ibb.co/Z89schN/hackviolet1.png" alt="hackviolet1" border="0">
 
-## Inspiration  
+## Inspiration ✨
   
 Women are known for delivering multiple roles effortlessly per day, and they are considered the backbone of every society. The inspiration is to build a platform exclusively for women to help them fly even higher!  
 Economic times study says that in West Bengal, India 73.5 percent of the women who are currently not working would be interested in taking up job opportunities.  
 Road seems easier if we know someone has walked and been successful. So we connect women to successful individuals to mentor them.  
 There is a lot that a woman can discuss or share with other women, and there are very few women exclusive forums.  
 
-## What it does
+## What it does 🚀
 This is a platform exclusively for Women  
 We have a discussion forum where women can ask questions and discuss topics. Mentors and other women can engage in discussion by replying to the post.  
 There is a different login for Companies where they can post jobs for women, and women can see them after they log in!  
@@ -25,13 +27,13 @@ Once the user request a time slot, the mentor gets an option to either accept or
 4. Best Web App  
 5. Best Creative Use of Twilio: Twilio's video API is used for making video calling services  
   
-## How we built it  
+## How we built it  ⚒️
 Frontend: Kshitij, Dhruv, Harsh  
 Backend: Anubhav  
   
 The backend is built using Django while the frontend is made using React. Authentication is made possible using JWT. Django serves/gets data to/from React by making API calls. Video services are made possible using Twilio. AWS S3 bucket is used for storing static files like images. Backend is deployed to Heroku while Frontend is deployed to Vercel
   
-## Challenges we ran into  
+## Challenges we ran into 🏢
 1. Integrating Django backend with React frontend  
 2. Authentication using JWT  
 3. Using Twilio's video API and going through its detailed docs  
@@ -59,7 +61,7 @@ The backend is built using Django while the frontend is made using React. Authen
 
 
 ## Team: 💪🏻
-1. [Dhruv](https://github.com/Dhruv-Sachdev1313)
-2. [Kshitij](https://github.com/KshitijDarekar)
-3. [Harsh](https://github.com/harshsharma6401)
-4. [Anubhav](https://github.com/anubhav06)
+
+<a href = "https://github.com/anubhav06/hackViolet22/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=anubhav06/hackViolet22"/>
+</a>
