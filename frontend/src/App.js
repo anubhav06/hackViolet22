@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import CompanyRoute from './utils/CompanyRoute';
