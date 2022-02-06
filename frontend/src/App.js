@@ -9,7 +9,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import LoginCompanyPage from './pages/LoginCompanyPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import RegisterCompanyPage from './pages/RegisterCompanyPage.jsx';
-import UserProfile from './pages/UserProfile.jsx';
+import UserProfile from './pages/UserProfile.js';
 import HomePage from './pages/HomePage';
 import JobPortal from './pages/JobPortal';
 import JobPortalCompanyView from './pages/JobPortalCompanyView';
