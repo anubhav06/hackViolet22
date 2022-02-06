@@ -1,12 +1,13 @@
+/* eslint-disable import/extensions */
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import CompanyRoute from './utils/CompanyRoute';
 import { AuthProvider } from './context/AuthContext';
 
-import LoginPage from './pages/LoginPage';
-import LoginCompanyPage from './pages/LoginCompanyPage';
-import RegisterPage from './pages/RegisterPage';
-import RegisterCompanyPage from './pages/RegisterCompanyPage';
+import LoginPage from './pages/LoginPage.jsx';
+import LoginCompanyPage from './pages/LoginCompanyPage.jsx';
+import RegisterPage from './pages/RegisterPage.jsx';
+import RegisterCompanyPage from './pages/RegisterCompanyPage.jsx';
 import UserProfile from './pages/UserProfile';
 import HomePage from './pages/HomePage';
 import JobPortal from './pages/JobPortal';
