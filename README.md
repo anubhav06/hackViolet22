@@ -5,6 +5,10 @@ Project: https://devpost.com/software/womenly
 <br/><br/>
 <img src="https://i.ibb.co/Z89schN/hackviolet1.png" alt="hackviolet1" border="0">
 
+## Test login (as a user)
+Email: user1@example.com  
+Password: pass1
+
 ## Inspiration ✨
   
 Women are known for delivering multiple roles effortlessly per day, and they are considered the backbone of every society. The inspiration is to build a platform exclusively for women to help them fly even higher!  
