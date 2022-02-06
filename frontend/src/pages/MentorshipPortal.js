@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-alert */
+/* eslint-disable no-unused-vars */
 /* eslint-disable radix */
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect, useContext } from 'react';
@@ -112,199 +115,193 @@ const MentorshipPortal = () => {
     } else {
       alert('ERROR: ', data);
     }
+  };
+  console.log('MEETINGS: ', meetings);
 
-    console.log('MEETINGS: ', meetings);
+  return (
+    <div>
+      <Header />
+      <Container>
+        <Grid container>
+          <Grid item xs={5}>
+            <Paper>
+              <Typography gutterBottom variant="h3">
+                {' '}
+                Mentorship Portal{' '}
+              </Typography>
+              <div>
+                {mentors.map((mentor) => (
+                  <div key={mentor.id}>
+                    <Card sx={{ maxWidth: 'auto' }}>
+                      <CardHeader
+                        avatar={
+                          <Avatar
+                            sx={{ bgcolor: red[500] }}
+                            aria-label="recipe"
+                          >
+                            {mentor.name[0]}
+                          </Avatar>
+                        }
+                        // action={
+                        // <IconButton aria-label="settings">
+                        //     <MoreVertIcon />
+                        // </IconButton>
+                        // }
+                        title={mentor.name}
+                        subheader={`${mentor.startTime} - ${mentor.endTime} ${mentor.timeZone}`}
+                      />
 
-    return (
-      <div>
-        <Header />
-        <Container>
-          <Grid container>
-            <Grid item xs={5}>
-              <Paper>
-                <Typography gutterBottom variant="h3">
-                  {' '}
-                  Mentorship Portal{' '}
-                </Typography>
-                <div>
-                  {mentors.map((mentor) => (
-                    <div key={mentor.id}>
-                      <Card sx={{ maxWidth: 'auto' }}>
-                        <CardHeader
-                          avatar={
-                            <Avatar
-                              sx={{ bgcolor: red[500] }}
-                              aria-label="recipe"
-                            >
-                              {mentor.name[0]}
-                            </Avatar>
-                          }
-                          // action={
-                          // <IconButton aria-label="settings">
-                          //     <MoreVertIcon />
-                          // </IconButton>
-                          // }
-                          title={mentor.name}
-                          subheader={mentor.timeZone}
-                        />
-
-                        <CardContent>
-                          <Typography variant="body2" color="text.secondary">
-                            Bio: {mentor.bio}
-                          </Typography>
-                        </CardContent>
-                        <CardActions disableSpacing>
-                          {/* <IconButton aria-label="add to favorites">
+                      <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                          Bio: {mentor.bio}
+                        </Typography>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                        {/* <IconButton aria-label="add to favorites">
                                 <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
                                 <ShareIcon />
                                 </IconButton>
                                 */}
-                          <Button
-                            variant="contained"
-                            endIcon={<AlarmIcon />}
-                            onClick={() =>
-                              formDisabled === true
-                                ? setFormDisabled(false)
-                                : setFormDisabled(true)
-                            }
-                          >
-                            Schedule a meet
-                          </Button>
+                        <Button
+                          variant="contained"
+                          endIcon={<AlarmIcon />}
+                          onClick={() =>
+                            formDisabled === true
+                              ? setFormDisabled(false)
+                              : setFormDisabled(true)
+                          }
+                        >
+                          Schedule a meet
+                        </Button>
 
-                          <Collapse
-                            in={formDisabled}
-                            timeout="auto"
-                            unmountOnExit
-                          >
-                            <CardContent>
-                              <form
-                                hidden={formDisabled}
-                                onSubmit={scheduleMeet}
-                              >
-                                <Typography paragraph>
-                                  Enter start time for a 1hr meeting
-                                </Typography>
-                                <input
-                                  type="number"
-                                  name="time"
-                                  min={parseInt(
-                                    mentor.startTime?.split(':')[0]
-                                  )}
-                                  max={
-                                    parseInt(mentor.endTime?.split(':')[0]) - 1
-                                  }
-                                />{' '}
-                                : 00: 00 <br />
-                                <input
-                                  type="text"
-                                  name="mentor"
-                                  defaultValue={mentor.id}
-                                  hidden
-                                />
-                                <input type="submit" value="Schedule" />
-                              </form>
-                            </CardContent>
-                          </Collapse>
-                        </CardActions>
-                      </Card>
-                      {/* <p>Name: {mentor.name}</p>
+                        <Collapse
+                          in={formDisabled}
+                          timeout="auto"
+                          unmountOnExit
+                        >
+                          <CardContent>
+                            <form hidden={formDisabled} onSubmit={scheduleMeet}>
+                              <Typography paragraph>
+                                Enter start time for a 1hr meeting
+                              </Typography>
+                              <input
+                                type="number"
+                                name="time"
+                                min={parseInt(mentor.startTime?.split(':')[0])}
+                                max={
+                                  parseInt(mentor.endTime?.split(':')[0]) - 1
+                                }
+                              />{' '}
+                              : 00: 00 <br />
+                              <input
+                                type="text"
+                                name="mentor"
+                                defaultValue={mentor.id}
+                                hidden
+                              />
+                              <input type="submit" value="Schedule" />
+                            </form>
+                          </CardContent>
+                        </Collapse>
+                      </CardActions>
+                    </Card>
+                    {/* <p>Name: {mentor.name}</p>
                         <p>Bio: {mentor.bio} </p>
                         <p> Timings: {mentor.startTime} - {mentor.endTime} {mentor.timeZone} </p>
                         <button onClick={() => setFormDisabled(false)}> Schedule a meet </button> */}
-                      {/* TODO: Clicking on the button, open's the forms of every mentor rather than a single mentor. Fix this. */}
-                      {/* <form hidden={formDisabled} onSubmit={scheduleMeet}>
+                    {/* TODO: Clicking on the button, open's the forms of every mentor rather than a single mentor. Fix this. */}
+                    {/* <form hidden={formDisabled} onSubmit={scheduleMeet}>
                             <p> Enter start time for a 1hr meeting </p>
                             <input type='number' name='time' min={parseInt(mentor.startTime?.split(':')[0])} max={parseInt(mentor.endTime?.split(':')[0])-1}/> : 00: 00 <br/>
                             <input type='text' name='mentor' defaultValue={mentor.id} hidden={true} />
                             <input type='submit' value='Schedule' />
                         </form> */}
-                    </div>
-                  ))}
-                </div>
-              </Paper>
-            </Grid>
-            <Grid item xs={1} />
-            <Grid item xs={6}>
-              <Paper>
-                <Typography gutterBottom variant="h5">
-                  Meetings scheduled by user
-                </Typography>
-                <div>
-                  {meetings.length === 0 ? (
-                    <Typography variant="h5" component="div" alignCenter>
-                      No meetings scheduled{' '}
-                    </Typography>
-                  ) : null}
+                  </div>
+                ))}
+              </div>
+            </Paper>
+          </Grid>
+          <Grid item xs={1} />
+          <Grid item xs={6}>
+            <Paper>
+              <Typography gutterBottom variant="h5">
+                Meetings scheduled by user
+              </Typography>
+              <div>
+                {meetings.length === 0 ? (
+                  <Typography variant="h5" component="div" alignCenter>
+                    No meetings scheduled{' '}
+                  </Typography>
+                ) : null}
 
-                  {meetings.map((meeting) => (
-                    <div key={meeting.id}>
-                      <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                          component="img"
-                          height="140"
-                          image="/static/images/cards/contemplative-reptile.jpg"
-                          alt="green iguana"
-                        />
-                        <CardContent>
-                          {meeting.confirmed === true ? (
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="div"
-                              alignCenter
-                            >
-                              Meeting Confirmed: True
-                            </Typography>
-                          ) : (
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="div"
-                              alignCenter
-                            >
-                              Meeting Confirmed: False
-                            </Typography>
-                          )}
-
-                          <Typography variant="body2" color="text.secondary">
-                            Mentor Name: {meeting.mentor.name}
+                {meetings.map((meeting) => (
+                  <div key={meeting.id}>
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image="/static/images/cards/contemplative-reptile.jpg"
+                        alt="green iguana"
+                      />
+                      <CardContent>
+                        {meeting.confirmed === true ? (
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            alignCenter
+                          >
+                            Meeting Confirmed: True
                           </Typography>
+                        ) : (
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            alignCenter
+                          >
+                            Meeting Confirmed: False
+                          </Typography>
+                        )}
+
+                        <Typography variant="body2" color="text.secondary">
+                          Mentor Name: {meeting.mentor.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Requested Time: {meeting.startTime} -{' '}
+                          {meeting.endTime} {meeting.mentor.timeZone}
+                        </Typography>
+                        {meeting.accepted === false ? (
                           <Typography variant="body2" color="text.secondary">
                             Requested Time: {meeting.startTime} -{' '}
                             {meeting.endTime} {meeting.mentor.timeZone}
+                            Meeting Link: NA{' '}
                           </Typography>
-                          {meeting.accepted === false ? (
-                            <Typography variant="body2" color="text.secondary">
-                              Requested Time: {meeting.startTime} -{' '}
-                              {meeting.endTime} {meeting.mentor.timeZone}
-                              Meeting Link: NA{' '}
-                            </Typography>
-                          ) : (
-                            <Typography variant="body2" color="text.secondary">
-                              {' '}
-                              Meeting Link: {meeting.meetingLink}{' '}
-                            </Typography>
-                          )}
-                        </CardContent>
-                      </Card>
+                        ) : (
+                          <Typography variant="body2" color="text.secondary">
+                            {' '}
+                            Meeting Link: {meeting.meetingLink}{' '}
+                          </Typography>
+                        )}
+                      </CardContent>
+                    </Card>
 
-                      {/* <p> Mentor Name: {meeting.mentor.name} </p>
+                    {/* <p> Mentor Name: {meeting.mentor.name} </p>
                         <p> Requested Time: {meeting.startTime} - {meeting.endTime} {meeting.mentor.timeZone} </p>
                         {meeting.accepted === false ? 
                         <p> Meeting Link: NA </p>
                         : <p> Meeting Link: {meeting.meetingLink} </p>} */}
-                    </div>
-                  ))}
-                </div>
-              </Paper>
-            </Grid>
+                  </div>
+                ))}
+              </div>
+            </Paper>
           </Grid>
-        </Container>
-      </div>
-    );
-  };
+        </Grid>
+      </Container>
+    </div>
+  );
 };
 
 export default MentorshipPortal;
