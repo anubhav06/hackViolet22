@@ -115,19 +115,10 @@ const MentorshipPortal = () => {
             <Container>
                 <Grid container>
                     <Grid item xs={5}>
-
-                    </Grid>
-                    <Grid item xs={1}></Grid>
-                    <Grid item xs={6}>
-                        
-                    </Grid>
-
-                </Grid>
-            </Container>
-            
-            <h1> --- Mentorship Portal --- </h1>
-            <div>
-                {mentors.map(mentor => (
+                        <Paper>
+                        <h1> --- Mentorship Portal --- </h1>
+                        <div>
+                    {mentors.map(mentor => (
                     <div key={mentor.id}>
                         <p>Name: {mentor.name}</p>
                         <p>Bio: {mentor.bio} </p>
@@ -144,9 +135,12 @@ const MentorshipPortal = () => {
                 ))}
             </div>
 
-
-            {/*  To show a user's scheduled meetings */}
-            <h3> ---- Meetings scheduled by user ---- </h3>
+                    </Paper>
+                    </Grid>
+                    <Grid item xs={1}></Grid>
+                    <Grid item xs={6}>
+                        <Paper>
+                        <h3> ---- Meetings scheduled by user ---- </h3>
             <div>
                 {meetings.length === 0 ? 
                 <p> No meetings scheduled </p>
@@ -167,6 +161,18 @@ const MentorshipPortal = () => {
                 ))}
             </div>
 
+                        </Paper>
+                    </Grid>
+
+                </Grid>
+            </Container>
+            
+
+            
+
+
+            {/*  To show a user's scheduled meetings */}
+            
 
         </div>
     )
