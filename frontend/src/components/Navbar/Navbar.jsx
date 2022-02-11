@@ -13,7 +13,8 @@ import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import LoginIcon from '@mui/icons-material/Login';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import AuthContext from '../../context/AuthContext';
 
 const menuItems = [
@@ -58,14 +59,25 @@ function Navbar() {
     <AppBar color="secondary" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+          <Link
+            to="/"
+            style={{
+              display: 'contents',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
           >
-            LOGO
-          </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              href="/"
+            >
+              SheForum
+            </Typography>
+          </Link>
+
           {user ? (
             <>
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -141,10 +153,9 @@ function Navbar() {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
+                    <Avatar>
+                      <PermIdentityIcon />
+                    </Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -163,7 +174,11 @@ function Navbar() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    onClick={handleCloseNavMenu}
+                    to="/my-account"
+                    component={Link}
+                  >
                     <Typography textAlign="center">Profile</Typography>
                   </MenuItem>
                   <MenuItem onClick={logoutUser}>
