@@ -1,16 +1,13 @@
 /* eslint-disable react/self-closing-comp */
-/* eslint-disable react/jsx-no-duplicate-props */
-import React, { useState, useEffect, useContext } from 'react';
-import { Grid, Typography } from '@mui/material';
+import React, { useContext } from 'react';
+import { Grid, Paper, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import AuthContext from '../context/AuthContext';
-import Header from '../components/Header';
 import CompanyAuthContext from '../context/CompanyAuthContext';
-import img1 from '../assets/logo192.png';
-import img2 from '../assets/home1.png';
 import img3 from '../assets/home1.svg';
-import img4 from '../assets/home2.svg';
-import img5 from '../assets/home2.png';
-import img6 from '../assets/home3.svg';
+import img7 from '../assets/home5.svg';
+import img8 from '../assets/home6.svg';
+import img9 from '../assets/home7.svg';
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
@@ -23,87 +20,159 @@ const HomePage = () => {
 
   return (
     <div>
-      <Grid container spacing={2}>
-        <Grid item xs={5} sx={12}>
-          <Typography
-            variant="h1"
-            noWrap
-            component="div"
-            sx={{ mr: 2, my: 12, mx: 4, display: { md: 'flex' } }}
-            color="secondary"
-          >
-            SheForum
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="h3"
-            color="textSecondary"
-            sx={{ mr: 2, my: 4, mx: 4, display: { xs: 'none', md: 'flex' } }}
-          >
-            {' '}
-            A platform for women to find right mentorship and a lot more .{' '}
-          </Typography>
+      <Box>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={5}>
+            <Typography
+              variant="h2"
+              noWrap
+              component="div"
+              sx={{ mr: 2, my: 12, mx: 4, display: 'flex' }}
+              color="secondary"
+            >
+              SheForum
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h4"
+              color="textSecondary"
+              sx={{ mr: 2, my: 4, mx: 4, display: { xs: '', md: 'flex' } }}
+            >
+              {' '}
+              A platform for women to find right mentorship and a lot more.{' '}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} lg={2}></Grid>
+          <Grid item xs={12} lg={5} sx={{ my: 8 }}>
+            <img src={img3} alt="landing-1" width="90%" />
+          </Grid>
         </Grid>
-        <Grid item xs={2} sx={12}></Grid>
-        <Grid item xs={5} sx={12} sx={{ my: 8 }}>
-          <img src={img3} alt="landing-1" width="500px" />
-        </Grid>
+      </Box>
 
-        <Grid item xs={5} sx={12} sx={{ my: 8 }}>
-          <img src={img4} alt="landing-1" width="500px" sx={{ ml: 4 }} />
+      <Box
+        sx={{
+          flexGrow: 1,
+          mt: 20,
+          backgroundColor: 'primary.main',
+          boxShadow: 4,
+        }}
+      >
+        <Grid container spacing={1} sx={{ display: 'flex' }}>
+          <Grid item xs={12} lg={5} sx={{ mx: 2 }}>
+            <Paper elevation={5}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                color="textSecondary"
+                sx={{ my: 4, display: { xs: '', md: 'flex' }, p: 2 }}
+              >
+                {' '}
+                When girls are educated, their countries become stronger and
+                more prosperous.
+                <br /> – Michelle Obama{' '}
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item lg={5}></Grid>
+          <Grid item lg={6}></Grid>
+          <Grid item lg={5} xs={12} sx={{ mx: 2 }}>
+            <Paper elevation={5}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                color="textSecondary"
+                sx={{
+                  my: 4,
+                  display: { xs: { fontSize: '12px' }, md: 'flex' },
+                  p: 2,
+                }}
+              >
+                {' '}
+                The education and empowerment of women throughout the world
+                cannot fail to result in a more caring, tolerant, just, and
+                peaceful life for all. <br /> – Aung San Suu Kyi{' '}
+              </Typography>
+            </Paper>
+          </Grid>
         </Grid>
+      </Box>
 
-        <Grid item xs={2} sx={12}></Grid>
+      <Box sx={{ boxShadow: 2 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={5}>
+            <Typography
+              gutterBottom
+              variant="h4"
+              color="textSecondary"
+              sx={{
+                mr: 2,
+                my: { lg: 20, xs: 2 },
+                mx: 4,
+                display: { xs: '', md: 'flex' },
+              }}
+            >
+              {' '}
+              Schedule a video call with your mentor.{' '}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} lg={2}></Grid>
+          <Grid item xs={12} lg={5} sx={{ my: { lg: 8, xs: 2 } }}>
+            <img src={img7} alt="landing-1" width="90%" />
+          </Grid>
+        </Grid>
+      </Box>
 
-        <Grid item xs={5} sx={12}>
-          <Typography
-            variant="h1"
-            noWrap
-            component="div"
-            sx={{ mr: 2, my: 12, mx: 4, display: { md: 'flex' } }}
-            color="secondary"
-          >
-            {' '}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="h3"
-            color="textSecondary"
-            sx={{ mr: 2, my: 4, mx: 4, display: { xs: 'none', md: 'flex' } }}
-          >
-            {' '}
-            When girls are educated, their countries become stronger and more
-            prosperous. – Michelle Obama{' '}
-          </Typography>
-        </Grid>
+      <Box sx={{ backgroundColor: '#eeeeee', boxShadow: 2 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={5} sx={{ my: 8 }}>
+            <img src={img8} alt="landing-1" width="90%" />
+          </Grid>
 
-        <Grid item xs={5} sx={12}>
-          <Typography
-            variant="h1"
-            noWrap
-            component="div"
-            sx={{ mr: 2, my: 12, mx: 4, display: { md: 'flex' } }}
-            color="secondary"
-          >
-            {' '}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="h3"
-            color="textSecondary"
-            sx={{ mr: 2, my: 4, mx: 4, display: { xs: 'none', md: 'flex' } }}
-          >
-            {' '}
-            The education and empowerment of women throughout the world cannot
-            fail to result in a more caring, tolerant, just, and peaceful life
-            for all. – Aung San Suu Kyi{' '}
-          </Typography>
+          <Grid item xs={12} lg={2}></Grid>
+
+          <Grid item xs={12} lg={5}>
+            <Typography
+              gutterBottom
+              variant="h4"
+              color="textSecondary"
+              sx={{
+                mr: 2,
+                my: { lg: 20, xs: 2 },
+                mx: 4,
+                display: { md: 'flex' },
+              }}
+            >
+              {' '}
+              Explore new oppportunities.{' '}
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={2} sx={12}></Grid>
-        <Grid item xs={5} sx={12} sx={{ my: 8 }} sx={{ my: 8 }}>
-          <img src={img6} alt="landing-1" width="500px" />
+      </Box>
+
+      <Box>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={5}>
+            <Typography
+              gutterBottom
+              variant="h4"
+              color="textSecondary"
+              sx={{
+                mr: 2,
+                my: { lg: 20, xs: 2 },
+                mx: 4,
+                display: { xs: '', md: 'flex' },
+              }}
+            >
+              {' '}
+              Share your thoughts in the SheForum.{' '}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} lg={2}></Grid>
+          <Grid item xs={12} lg={5} sx={{ my: { lg: 8, xs: 2 } }}>
+            <img src={img9} alt="landing-1" width="90%" />
+          </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </div>
   );
 };
