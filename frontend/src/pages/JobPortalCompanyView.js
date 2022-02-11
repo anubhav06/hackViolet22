@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import CompanyAuthContext from '../context/CompanyAuthContext';
-import Header from '../components/Header';
 
 const JobPortalCompanyView = () => {
   const [jobs, setJobs] = useState([]);
@@ -65,8 +64,6 @@ const JobPortalCompanyView = () => {
 
   return (
     <div>
-      <Header />
-
       <h1> --- Job Portal (Company's View)--- </h1>
       {company ? (
         <div>

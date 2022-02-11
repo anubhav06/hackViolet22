@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
 
 const UserProfile = ({ match }) => {
@@ -79,7 +78,6 @@ const UserProfile = ({ match }) => {
 
   return (
     <div>
-      <Header />
       <h3> USER'S INFO </h3>
       <div>
         {userInfo.map((info) => (

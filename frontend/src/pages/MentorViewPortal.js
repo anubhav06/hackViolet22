@@ -7,7 +7,6 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
 
 const MentorViewPortal = () => {
@@ -75,7 +74,6 @@ const MentorViewPortal = () => {
 
   return (
     <div>
-      <Header />
       {/* <Paper> */}
       <Typography gutterBottom variant="h2" color="textSecondary">
         {' '}

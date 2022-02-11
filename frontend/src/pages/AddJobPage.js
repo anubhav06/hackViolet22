@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import CompanyAuthContext from '../context/CompanyAuthContext';
-import Header from '../components/Header';
 
 const AddJobPage = () => {
   const { user, authTokens } = useContext(AuthContext);
@@ -45,8 +44,6 @@ const AddJobPage = () => {
 
   return (
     <div>
-      <Header />
-
       <h1> --- Add a new job --- </h1>
 
       <div>

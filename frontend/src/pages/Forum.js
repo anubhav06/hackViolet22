@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 // import TextField from '@mui/material/TextField';
-import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
 import MenuCard from '../components/Cards/menuCard';
 import CardContainer from '../components/Cards/forumCard';

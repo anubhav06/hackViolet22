@@ -6,7 +6,6 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import Header from '../components/Header';
 import AuthContext from '../context/AuthContext';
 
 const JobPortal = () => {
@@ -40,8 +39,6 @@ const JobPortal = () => {
 
   return (
     <div>
-      <Header />
-
       <Typography alignCenter gutterBottom variant="h2" color="textSecondary">
         Job Portal
       </Typography>
